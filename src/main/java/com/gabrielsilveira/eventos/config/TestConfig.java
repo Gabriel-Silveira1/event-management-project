@@ -1,9 +1,11 @@
 package com.gabrielsilveira.eventos.config;
 
 import com.gabrielsilveira.eventos.entities.Category;
+import com.gabrielsilveira.eventos.entities.Organizer;
 import com.gabrielsilveira.eventos.entities.Participant;
 import com.gabrielsilveira.eventos.entities.Venue;
 import com.gabrielsilveira.eventos.repositories.CategoryRepository;
+import com.gabrielsilveira.eventos.repositories.OrganizerRepository;
 import com.gabrielsilveira.eventos.repositories.ParticipantRepository;
 import com.gabrielsilveira.eventos.repositories.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     VenueRepository venueRepository;
 
+    @Autowired
+    OrganizerRepository organizerRepository;
+
     @Override
     public void run(String... args) throws Exception {
         Participant par1 = new Participant(null, "Lucas Ferreira", "lucas@gmail.com", "11988880001", "CPF-111.222.333-44");
@@ -39,5 +44,9 @@ public class TestConfig implements CommandLineRunner {
         Venue v1 = new Venue(null, "Centro de Convenções SP", "Av. Paulista, 1000", 500);
         Venue v2 = new Venue(null, "Arena Rio", "Rua das Laranjeiras, 200", 2000);
         venueRepository.saveAll(Arrays.asList(v1, v2));
+
+        Organizer org1 = new Organizer(null, "Tech Events Ltda", "contato@techevents.com", "11999990001", "Eventos tech");
+        Organizer org2 = new Organizer(null, "Cultura & Arte", "contato@culturaarte.com", "21999990002", "Eventos culturais");
+        organizerRepository.saveAll(Arrays.asList(org1, org2));
     }
 }
