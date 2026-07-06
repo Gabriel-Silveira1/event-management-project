@@ -1,18 +1,13 @@
 package com.gabrielsilveira.eventos.config;
 
-import com.gabrielsilveira.eventos.entities.Category;
-import com.gabrielsilveira.eventos.entities.Organizer;
-import com.gabrielsilveira.eventos.entities.Participant;
-import com.gabrielsilveira.eventos.entities.Venue;
-import com.gabrielsilveira.eventos.repositories.CategoryRepository;
-import com.gabrielsilveira.eventos.repositories.OrganizerRepository;
-import com.gabrielsilveira.eventos.repositories.ParticipantRepository;
-import com.gabrielsilveira.eventos.repositories.VenueRepository;
+import com.gabrielsilveira.eventos.entities.*;
+import com.gabrielsilveira.eventos.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import java.time.Instant;
 import java.util.Arrays;
 
 @Configuration
@@ -29,6 +24,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     OrganizerRepository organizerRepository;
+
+    @Autowired
+    EventRepository eventRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -48,5 +46,10 @@ public class TestConfig implements CommandLineRunner {
         Organizer org1 = new Organizer(null, "Tech Events Ltda", "contato@techevents.com", "11999990001", "Eventos tech");
         Organizer org2 = new Organizer(null, "Cultura & Arte", "contato@culturaarte.com", "21999990002", "Eventos culturais");
         organizerRepository.saveAll(Arrays.asList(org1, org2));
+
+        Event e1 = new Event(null, "Java Summit 2024", "Maior evento Java do Brasil", Instant.parse("2024-05-10T09:00:00Z"), 150.00, EventStatus.PUBLISHED, org1, cat1, v1);
+        Event e2 = new Event(null, "Rock in Rio Edição SP", "Festival de música", Instant.parse("2024-06-15T18:00:00Z"), 300.00, EventStatus.DRAFT, org2, cat2, v2);
+        Event e3 = new Event(null, "Maratona Urbana SP", "Corrida de rua 10km", Instant.parse("2024-07-20T07:00:00Z"), 80.00, EventStatus.PUBLISHED, org1, cat3, v1);
+
     }
 }
