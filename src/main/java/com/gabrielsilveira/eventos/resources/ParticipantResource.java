@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping(value = "/participants")
 public class ParticipantResource {
     @Autowired
-    ParticipantService participantService;
+    private ParticipantService participantService;
 
     @GetMapping
     public ResponseEntity<List<Participant>> findAll() {

@@ -1,7 +1,7 @@
 package com.gabrielsilveira.eventos.services;
 
 import com.gabrielsilveira.eventos.repositories.RegistrationRepository;
-import jakarta.servlet.Registration;
+import com.gabrielsilveira.eventos.entities.Registration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

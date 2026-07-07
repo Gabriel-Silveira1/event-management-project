@@ -37,7 +37,7 @@ public class Event implements Serializable {
     private Venue venue;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "event")
+    @OneToMany(mappedBy = "id.event")
     private List<Registration> registrations = new ArrayList<>();
 
     public Event() {
@@ -97,11 +97,11 @@ public class Event implements Serializable {
     }
 
     public EventStatus getStatus() {
-        return EventStatus.valueOf(status);
+        return EventStatus.fromCode(status);
     }
 
     public void setStatus(EventStatus status) {
-        if (status == null) {
+        if (status != null) {
             this.status = status.getCode();
         }
     }

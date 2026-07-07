@@ -50,7 +50,7 @@ public class Registration implements Serializable {
     }
 
     public RegistrationStatus getStatus() {
-        return RegistrationStatus.valueOf(status);
+        return RegistrationStatus.fromCode(status);
     }
 
     public void setStatus(RegistrationStatus status) {

@@ -15,7 +15,7 @@ public enum RegistrationStatus {
         return code;
     }
 
-    public static RegistrationStatus valueof(int code) {
+    public static RegistrationStatus fromCode(int code) {
         for (RegistrationStatus value : RegistrationStatus.values()) {
             if (value.getCode() == code) {
                 return value;

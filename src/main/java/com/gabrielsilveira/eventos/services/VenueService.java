@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class VenueService {
     @Autowired
-    VenueRepository venueRepository;
+    private VenueRepository venueRepository;
 
     public List<Venue> findAll() {
         return venueRepository.findAll();

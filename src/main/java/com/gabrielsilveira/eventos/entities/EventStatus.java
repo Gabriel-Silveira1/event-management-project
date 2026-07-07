@@ -17,7 +17,7 @@ public enum EventStatus {
         return code;
     }
 
-    public static EventStatus valueOf(int code) {
+    public static EventStatus fromCode(int code) {
         for (EventStatus value : EventStatus.values()) {
             if (value.getCode() == code) {
                 return value;

@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class ParticipantService {
     @Autowired
-    ParticipantRepository participantRepository;
+    private ParticipantRepository participantRepository;
 
     public List<Participant> findAll() {
         return participantRepository.findAll();
