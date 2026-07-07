@@ -1,8 +1,11 @@
 package com.gabrielsilveira.eventos.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,6 +18,10 @@ public class Participant implements Serializable {
     private String email;
     private String phone;
     private String document;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "id.participant")
+    private List<Registration> registrations = new ArrayList<>();
 
     public Participant() {
     }
@@ -65,6 +72,10 @@ public class Participant implements Serializable {
 
     public void setDocument(String document) {
         this.document = document;
+    }
+
+    public List<Registration> getRegistrations() {
+        return registrations;
     }
 
     @Override
