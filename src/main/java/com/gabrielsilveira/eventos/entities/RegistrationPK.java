@@ -17,6 +17,14 @@ public class RegistrationPK implements Serializable {
     @JoinColumn(name = "participant_id")
     private Participant participant;
 
+    public RegistrationPK(Event event, Participant participant) {
+        this.event = event;
+        this.participant = participant;
+    }
+
+    public RegistrationPK() {
+    }
+
     public Event getEvent() {
         return event;
     }

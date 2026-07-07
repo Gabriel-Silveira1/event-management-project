@@ -28,6 +28,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     EventRepository eventRepository;
 
+    @Autowired
+    RegistrationRepository registrationRepository;
+
     @Override
     public void run(String... args) throws Exception {
         Participant par1 = new Participant(null, "Lucas Ferreira", "lucas@gmail.com", "11988880001", "CPF-111.222.333-44");
@@ -50,6 +53,11 @@ public class TestConfig implements CommandLineRunner {
         Event e1 = new Event(null, "Java Summit 2024", "Maior evento Java do Brasil", Instant.parse("2024-05-10T09:00:00Z"), 150.00, EventStatus.PUBLISHED, org1, cat1, v1);
         Event e2 = new Event(null, "Rock in Rio Edição SP", "Festival de música", Instant.parse("2024-06-15T18:00:00Z"), 300.00, EventStatus.DRAFT, org2, cat2, v2);
         Event e3 = new Event(null, "Maratona Urbana SP", "Corrida de rua 10km", Instant.parse("2024-07-20T07:00:00Z"), 80.00, EventStatus.PUBLISHED, org1, cat3, v1);
+        eventRepository.saveAll(Arrays.asList(e1, e2, e3));
 
+        Registration r1 = new Registration(e1, par1, Instant.now(), RegistrationStatus.CONFIRMED);
+        Registration r2 = new Registration(e2, par1, Instant.now(), RegistrationStatus.PENDING);
+        Registration r3 = new Registration(e1, par2, Instant.now(), RegistrationStatus.CONFIRMED);
+        registrationRepository.saveAll(Arrays.asList(r1, r2, r3));
     }
 }
