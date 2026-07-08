@@ -1,5 +1,6 @@
 package com.gabrielsilveira.eventos.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -14,6 +15,10 @@ public class Registration implements Serializable {
 
     private Instant registrationDate;
     private Integer status;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "registration")
+    private Ticket ticket;
 
     public Registration() {
     }
@@ -57,6 +62,14 @@ public class Registration implements Serializable {
         if (status != null) {
             this.status = status.getCode();
         }
+    }
+
+    public Ticket getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
     }
 
     @Override
